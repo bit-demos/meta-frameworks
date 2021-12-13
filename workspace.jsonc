@@ -10,7 +10,7 @@
     /**
      * the name of the component workspace. used for development purposes.
      **/
-    "name": "my-workspace-name",
+    "name": "bit-learn-meta-frameworks",
     /**
      * set the icon to be shown on the Bit server.
      **/
@@ -23,11 +23,11 @@
      * scope - scope name only, e.g. 'compilation'.
      * owner - owner name in bit.dev, e.g. 'teambit'.
      **/
-    "defaultDirectory": "{scope}/{name}",
+    "defaultDirectory": "{name}",
     /**
      * default scope for all components in workspace.
      **/
-    "defaultScope": "my-scope"
+    "defaultScope": "learn-bit-react.meta-frameworks"
   },
   /**
    * main configuration for component dependency resolution.
@@ -36,10 +36,22 @@
     /**
      * choose the package manager for Bit to use. you can choose between 'yarn', 'pnpm'
      */
-    "packageManager": "teambit.dependencies/pnpm",
+    "packageManager": "teambit.dependencies/yarn",
     "policy": {
-      "dependencies": {},
-      "peerDependencies": {}
+      "dependencies": {
+        "@bit-foundations/meta-frameworks.gatsby.config.globals": "0.0.1",
+        "@bit-foundations/meta-frameworks.gatsby.config.webpack-transformer": "0.0.1",
+        "@teambit/dependencies.modules.packages-excluder": "0.0.46",
+        "@teambit/evangelist.sections.cta": "0.5.22",
+        "@teambit/use-case-examples.extensions.harmony-react-babel": "0.0.1",
+        "jsonpath-plus": "6.0.1"
+      },
+      "peerDependencies": {
+        "@testing-library/react": "12.1.2",
+        "gatsby": "4.3.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+      }
     }
   },
   /**
@@ -50,14 +62,18 @@
    * see https://harmony-docs.bit.dev/aspects/variants for more info.
    **/
   "teambit.workspace/variants": {
-    /**
-     * "*" is a special rule which applied on all components in the workspace.
-     **/
-    "*": {
-      /**
-       * uncomment to apply the chosen environment on all components.
-       **/
-      // "teambit.react/react": { }
+    "{**/extensions/**}": {
+      "teambit.harmony/aspect": {},
+      "teambit.dependencies/dependency-resolver": {
+        "policy": {
+          "dependencies": {
+            "babel-plugin-remove-graphql-queries": "4.3.0"
+          }
+        }
+      }
+    },
+    "{gatsby/components/**}": {
+      "learn-bit-react.meta-frameworks/gatsby/extensions/gatsby-env": {}
     }
   }
 }
