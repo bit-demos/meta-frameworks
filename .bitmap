@@ -9,5 +9,17 @@
  */
 
 {
+    "gatsby/components/link": {
+        "scope": "learn-bit-react.meta-frameworks",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gatsby/components/link"
+    },
+    "gatsby/extensions/gatsby-env": {
+        "scope": "learn-bit-react.meta-frameworks",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gatsby/extensions/gatsby-env"
+    },
     "$schema-version": "14.9.0"
 }
